@@ -4,6 +4,23 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-anyhow = "1"
-nacos-sdk = {version = "0.5", features = ["default"]}
+futures = "0.3"
+axum = "0.8.6"
 tokio = { version = "1.48.0", features = ["full"] }
+
+anyhow = "1"
+clap = { version = "4.5.51", features = ["derive"] }
+nacos-sdk = {version = "0.5", features = ["default"]}
+rand = "0.9"
+
+### logs
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3", features = ["local-time"] }
+
+### gRPC
+tonic = "0.14"
+prost = "0.14"
+tonic-prost = "0.14"
+
+[build-dependencies]
+tonic-prost-build = "0.14"

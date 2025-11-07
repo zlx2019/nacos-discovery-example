@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package worker_grpc;
+
+option java_package = "com.zero.grpc.iface.message";
+option java_outer_classname = "EnvelopeMessage";
+option go_package="./;worker_grpc";
+
+service WorkerService {
+  rpc Work (TaskRequest) returns (TaskReply){}
+}
+
+// 任务处理请求
+message TaskRequest {
+  // 任务ID
+  string taskId = 1;
+  // 任务信息(JSON)
+  string task = 2;
+  // 任务创建时间
+  uint64 timestamp = 3;
+}
+
+// 任务处理响应
+message TaskReply {
+  // 任务ID
+  string taskId = 1;
+  // 是否成功
+  bool success = 2;
+  // 任务结果（JSON）
+  string solution = 3;
+  // 错误码
+  string errorCode = 4;
+  // 错误消息（如果有最好）
+  string errorMsg = 5;
+}
